@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Centered Video Page</title>
+    <style>
+        body {
+            background-color: pink;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 30px;
+            margin: 0 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+<video src="secondlast.mp4" autoplay loop muted width="600"></video>
+<div class="buttons">
+    <button onclick="window.location.href='4.html'">Yes</button>
+    <button id="noBtn" style="position:relative;">No</button>
+</div>
+<script>
+const noBtn = document.getElementById('noBtn');
+
+// Make the button absolutely positioned for free movement
+noBtn.style.position = 'absolute';
+
+noBtn.addEventListener('mouseenter', () => {
+    // Get viewport dimensions
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    // Button size
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
+
+    // Random position within viewport, keeping button fully visible
+    const left = Math.random() * (vw - btnWidth);
+    const top = Math.random() * (vh - btnHeight);
+
+    noBtn.style.left = left + 'px';
+    noBtn.style.top = top + 'px';
+});
+
+// Prevent click on "No"
+noBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+});
+</script>
+</body>
+</html>
